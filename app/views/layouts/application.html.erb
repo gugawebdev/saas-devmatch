@@ -4,6 +4,10 @@
     <title>DevMatch</title>
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
@@ -11,7 +15,19 @@
 
   <body>
 
+    <%   if flash[:notice] %>
+      <script type="text/javascript">
+        toastr.success(`<%= flash[:notice]%>`)
+      </script>
+    <% end %>
 
+    <%   if flash[:alert] %>
+      <script type="text/javascript">
+        toastr.success(`<%= flash[:alert]%>`)
+      </script>
+    <% end %>
+
+    
   <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class='container'>
     <div class="navbar-header">
@@ -35,5 +51,6 @@
 
 
       <%= yield %>
+
   </body>
 </html>
