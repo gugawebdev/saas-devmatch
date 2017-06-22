@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   root to: 'pages#home' #Root define a página inicial da aplicação. ex: localhost:3000/
 
   get 'about' => 'pages#about'
-
+  
+  resources :contacts
 end
